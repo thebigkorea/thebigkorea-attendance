@@ -90,11 +90,6 @@ button:disabled {
   opacity: 0.8;
 }
 
-.btn-reset:active {
-  transform: translateY(2px) scale(0.99);
-  opacity: 0.65;
-}
-
 .status {
   text-align: center;
   margin-top: 20px;
@@ -195,7 +190,6 @@ function updateBtn() {
   resetDailyIfNeeded();
 
   const last = localStorage.getItem(ACTION_KEY);
-
   const inBtn = document.getElementById("inBtn");
   const outBtn = document.getElementById("outBtn");
   const msg = document.getElementById("msg");
