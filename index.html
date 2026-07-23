@@ -1,16 +1,30 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0,
+    maximum-scale=1.0, user-scalable=no"
+  >
+
   <title>더큰코리아 출퇴근</title>
 
   <style>
-    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
 
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Noto Sans KR", "Malgun Gothic", sans-serif;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Noto Sans KR",
+        "Malgun Gothic",
+        sans-serif;
       background: #f5f1e8;
       color: #222;
     }
@@ -30,7 +44,7 @@
       background: #fff;
       border-radius: 24px;
       padding: 28px 22px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     }
 
     .logo {
@@ -91,13 +105,16 @@
       font-weight: 900;
       cursor: pointer;
       margin-top: 14px;
-      transition: transform 0.08s ease, box-shadow 0.08s ease, opacity 0.08s ease;
-      box-shadow: 0 8px 0 rgba(0,0,0,0.22);
+      transition:
+        transform 0.08s ease,
+        box-shadow 0.08s ease,
+        opacity 0.08s ease;
+      box-shadow: 0 8px 0 rgba(0, 0, 0, 0.22);
     }
 
     button:active {
       transform: translateY(6px) scale(0.98);
-      box-shadow: 0 2px 0 rgba(0,0,0,0.22);
+      box-shadow: 0 2px 0 rgba(0, 0, 0, 0.22);
       opacity: 0.88;
     }
 
@@ -107,13 +124,32 @@
       opacity: 0.65;
     }
 
-    .btn-main { background: #5b2c16; color: #fff; }
-    .btn-sub { background: #eee; color: #333; }
-    .btn-register { background: #6b3519; color: #fff; }
-    .btn-login { background: #1f5f99; color: #fff; }
-    .btn-in { background: #0f8a4b; color: #fff; }
-    .btn-out { background: #b3261e; color: #fff; }
-    .btn-reset { background: #eee; color: #333; font-size: 18px; height: 56px; }
+    .btn-register {
+      background: #6b3519;
+      color: #fff;
+    }
+
+    .btn-login {
+      background: #1f5f99;
+      color: #fff;
+    }
+
+    .btn-in {
+      background: #0f8a4b;
+      color: #fff;
+    }
+
+    .btn-out {
+      background: #b3261e;
+      color: #fff;
+    }
+
+    .btn-reset {
+      background: #eee;
+      color: #333;
+      font-size: 18px;
+      height: 56px;
+    }
 
     .btn-disabled {
       background: #ccc !important;
@@ -155,7 +191,9 @@
       white-space: pre-line;
     }
 
-    .hidden { display: none !important; }
+    .hidden {
+      display: none !important;
+    }
 
     .loading-dot {
       width: 16px;
@@ -167,14 +205,26 @@
     }
 
     @keyframes pulse {
-      0% { opacity: 0.3; transform: scale(0.9); }
-      50% { opacity: 1; transform: scale(1.1); }
-      100% { opacity: 0.3; transform: scale(0.9); }
+      0% {
+        opacity: 0.3;
+        transform: scale(0.9);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+
+      100% {
+        opacity: 0.3;
+        transform: scale(0.9);
+      }
     }
   </style>
 </head>
 
 <body>
+
   <div class="wrap">
     <div class="card">
 
@@ -184,69 +234,174 @@
       <div id="loadingScreen">
         <div class="loading-dot"></div>
         <div class="title">앱 실행 중...</div>
-        <div class="desc">직원 정보를 확인하고 있습니다.</div>
+        <div class="desc">
+          직원 정보를 확인하고 있습니다.
+        </div>
       </div>
 
       <div id="homeScreen" class="hidden">
         <div class="title">출퇴근 앱</div>
+
         <div class="desc">
           처음 사용하는 직원은 직원등록을,<br>
           이미 등록한 직원은 로그인을 눌러주세요.
         </div>
-        <button class="btn-register" onclick="showRegisterScreen()">직원 등록</button>
-        <button class="btn-login" onclick="showLoginScreen()">로그인</button>
+
+        <button
+          class="btn-register"
+          onclick="showRegisterScreen()"
+        >
+          직원 등록
+        </button>
+
+        <button
+          class="btn-login"
+          onclick="showLoginScreen()"
+        >
+          로그인
+        </button>
       </div>
 
       <div id="registerScreen" class="hidden">
         <div class="title">직원 등록</div>
 
         <label>매장명</label>
-        <input id="regStoreInput" type="text" value="더큰코리아">
+
+        <input
+          id="regStoreInput"
+          type="text"
+          value="더큰코리아"
+          readonly
+        >
 
         <label>직원명</label>
-        <input id="regNameInput" type="text" placeholder="예: 홍길동">
+
+        <input
+          id="regNameInput"
+          type="text"
+          placeholder="예: 홍길동"
+        >
 
         <label>전화번호</label>
-        <input id="regPhoneInput" type="tel" placeholder="예: 01012345678">
 
-        <button id="registerBtn" class="btn-register" onclick="registerEmployee()">직원 등록</button>
-        <button class="btn-reset" onclick="showHomeScreen()">처음으로</button>
+        <input
+          id="regPhoneInput"
+          type="tel"
+          placeholder="예: 01012345678"
+        >
 
-        <div id="registerStatus" class="status hidden"></div>
+        <button
+          id="registerBtn"
+          class="btn-register"
+          onclick="registerEmployee()"
+        >
+          직원 등록
+        </button>
+
+        <button
+          class="btn-reset"
+          onclick="showHomeScreen()"
+        >
+          처음으로
+        </button>
+
+        <div
+          id="registerStatus"
+          class="status hidden"
+        ></div>
       </div>
 
       <div id="loginScreen" class="hidden">
         <div class="title">로그인</div>
 
         <label>매장명</label>
-        <input id="loginStoreInput" type="text" value="더큰코리아">
+
+        <input
+          id="loginStoreInput"
+          type="text"
+          value="더큰코리아"
+          readonly
+        >
 
         <label>직원명</label>
-        <input id="loginNameInput" type="text" placeholder="예: 홍길동">
+
+        <input
+          id="loginNameInput"
+          type="text"
+          placeholder="예: 홍길동"
+        >
 
         <label>전화번호</label>
-        <input id="loginPhoneInput" type="tel" placeholder="예: 01012345678">
 
-        <button id="loginBtn" class="btn-login" onclick="loginEmployee()">로그인</button>
-        <button class="btn-reset" onclick="showHomeScreen()">처음으로</button>
+        <input
+          id="loginPhoneInput"
+          type="tel"
+          placeholder="예: 01012345678"
+        >
 
-        <div id="loginStatus" class="status hidden"></div>
+        <button
+          id="loginBtn"
+          class="btn-login"
+          onclick="loginEmployee()"
+        >
+          로그인
+        </button>
+
+        <button
+          class="btn-reset"
+          onclick="showHomeScreen()"
+        >
+          처음으로
+        </button>
+
+        <div
+          id="loginStatus"
+          class="status hidden"
+        ></div>
       </div>
 
       <div id="attendanceScreen" class="hidden">
         <div class="title">출퇴근 체크</div>
 
         <div class="employee-box">
-          <div id="employeeName" class="employee-name"></div>
-          <div id="employeePhone" class="employee-phone"></div>
+          <div
+            id="employeeName"
+            class="employee-name"
+          ></div>
+
+          <div
+            id="employeePhone"
+            class="employee-phone"
+          ></div>
         </div>
 
-        <button id="checkInBtn" class="btn-in" onclick="submitAttendance('출근')">출근</button>
-        <button id="checkOutBtn" class="btn-out" onclick="submitAttendance('퇴근')">퇴근</button>
+        <button
+          id="checkInBtn"
+          class="btn-in"
+          onclick="submitAttendance('출근')"
+        >
+          출근
+        </button>
 
-        <button class="btn-reset" onclick="logoutEmployee()">로그아웃 / 직원 변경</button>
+        <button
+          id="checkOutBtn"
+          class="btn-out"
+          onclick="submitAttendance('퇴근')"
+        >
+          퇴근
+        </button>
 
-        <div id="attendanceStatus" class="status">
+        <button
+          class="btn-reset"
+          onclick="logoutEmployee()"
+        >
+          로그아웃 / 직원 변경
+        </button>
+
+        <div
+          id="attendanceStatus"
+          class="status"
+        >
           출근 버튼을 눌러주세요.
         </div>
       </div>
@@ -255,7 +410,8 @@
   </div>
 
   <script>
-    const API_URL = "https://script.google.com/macros/s/AKfycbwfeV0ShGCKNohM_CmAZo6klGnwkrIGvz5WJl5VUIB7WIa-qz1Aa-PsWnbBfgG-Xmo/exec";
+    const API_URL =
+      "https://script.google.com/macros/s/AKfycbzRL0MceE5NfdEro8Og1VnjLhTc-pcCXKl0d3hXV8u8A3mNoRBBrTEfGdMtp2ohotWx/exec";
 
     let currentEmployee = {
       store: "",
@@ -265,107 +421,30 @@
       token: ""
     };
 
-    window.onload = function () {
+
+    window.onload = function() {
       showLoadingScreen();
 
-      setTimeout(function () {
-        const savedToken = localStorage.getItem("dtk_token");
+      setTimeout(function() {
+        const savedToken =
+          localStorage.getItem("dtk_token");
 
-        if (savedToken) {
-          apiRequest({
-            action: "getEmployeeByToken",
-            token: savedToken
-          }).then(function(result) {
-            if (result.exists) {
-              currentEmployee = {
-                store: result.store,
-                name: result.name,
-                phone: result.phone,
-                primaryKey: result.primaryKey,
-                token: result.token
-              };
-
-              saveEmployee(currentEmployee);
-              showAttendanceScreen();
-              loadTodayStatus();
-            } else {
-              clearEmployee();
-              showHomeScreen();
-            }
-          }).catch(function() {
-            showHomeScreen();
-          });
-        } else {
+        if (!savedToken) {
           showHomeScreen();
+          return;
         }
-      }, 700);
-    };
 
-    function registerEmployee() {
-      const store = document.getElementById("regStoreInput").value.trim();
-      const name = document.getElementById("regNameInput").value.trim();
-      const phone = normalizePhone(document.getElementById("regPhoneInput").value);
+        apiRequest({
+          action: "getEmployeeByToken",
+          token: savedToken
+        })
+        .then(function(result) {
+          if (!result || !result.exists) {
+            clearEmployee();
+            showHomeScreen();
+            return;
+          }
 
-      if (!store || !name || !phone) {
-        showRegisterStatus("매장명, 직원명, 전화번호를 모두 입력해주세요.");
-        return;
-      }
-
-      setButtonLoading("registerBtn", "등록 중...");
-
-      apiRequest({
-        action: "registerEmployee",
-        store,
-        name,
-        phone,
-        userAgent: navigator.userAgent
-      }).then(function(result) {
-        resetButton("registerBtn", "직원 등록");
-
-        if (result.success) {
-          currentEmployee = {
-            store: result.store,
-            name: result.name,
-            phone: result.phone,
-            primaryKey: result.primaryKey,
-            token: result.token
-          };
-
-          saveEmployee(currentEmployee);
-          showAttendanceScreen();
-          updateButtons(false, false);
-          showAttendanceStatus("등록 완료되었습니다.\n출근 버튼을 눌러주세요.");
-        } else {
-          showRegisterStatus(result.message || "등록에 실패했습니다.");
-        }
-      }).catch(function() {
-        resetButton("registerBtn", "직원 등록");
-        showRegisterStatus("오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
-      });
-    }
-
-    function loginEmployee() {
-      const store = document.getElementById("loginStoreInput").value.trim();
-      const name = document.getElementById("loginNameInput").value.trim();
-      const phone = normalizePhone(document.getElementById("loginPhoneInput").value);
-
-      if (!store || !name || !phone) {
-        showLoginStatus("매장명, 직원명, 전화번호를 모두 입력해주세요.");
-        return;
-      }
-
-      setButtonLoading("loginBtn", "로그인 중...");
-
-      apiRequest({
-        action: "loginEmployee",
-        store,
-        name,
-        phone,
-        userAgent: navigator.userAgent
-      }).then(function(result) {
-        resetButton("loginBtn", "로그인");
-
-        if (result.success) {
           currentEmployee = {
             store: result.store,
             name: result.name,
@@ -377,112 +456,409 @@
           saveEmployee(currentEmployee);
           showAttendanceScreen();
           loadTodayStatus();
-        } else {
-          showLoginStatus(result.message || "로그인에 실패했습니다.");
-        }
-      }).catch(function() {
-        resetButton("loginBtn", "로그인");
-        showLoginStatus("오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
-      });
-    }
+        })
+        .catch(function() {
+          showHomeScreen();
+        });
+      }, 700);
+    };
 
-    function submitAttendance(type) {
-      if (!currentEmployee.token) {
-        showAttendanceStatus("직원 정보가 없습니다. 다시 로그인해주세요.");
+
+    function registerEmployee() {
+      const store =
+        document
+          .getElementById("regStoreInput")
+          .value
+          .trim();
+
+      const name =
+        document
+          .getElementById("regNameInput")
+          .value
+          .trim();
+
+      const phone =
+        normalizePhone(
+          document
+            .getElementById("regPhoneInput")
+            .value
+        );
+
+      if (!store || !name || !phone) {
+        showRegisterStatus(
+          "매장명, 직원명, 전화번호를 모두 입력해주세요."
+        );
         return;
       }
 
-      const btnId = type === "출근" ? "checkInBtn" : "checkOutBtn";
-      setButtonLoading(btnId, type + " 처리중...");
+      setButtonLoading(
+        "registerBtn",
+        "등록 중..."
+      );
+
+      apiRequest({
+        action: "registerEmployee",
+        store: store,
+        name: name,
+        phone: phone,
+        userAgent: navigator.userAgent
+      })
+      .then(function(result) {
+        resetButton(
+          "registerBtn",
+          "직원 등록"
+        );
+
+        if (!result || !result.success) {
+          showRegisterStatus(
+            result && result.message
+              ? result.message
+              : "등록에 실패했습니다."
+          );
+          return;
+        }
+
+        const employee =
+          result.employee || result;
+
+        currentEmployee = {
+          store:
+            employee.store ||
+            "더큰코리아 본사",
+
+          name:
+            employee.name,
+
+          phone:
+            employee.phone,
+
+          primaryKey:
+            employee.primaryKey ||
+            employee.key ||
+            result.primaryKey ||
+            result.token,
+
+          token:
+            employee.token ||
+            employee.key ||
+            result.token
+        };
+
+        saveEmployee(currentEmployee);
+        showAttendanceScreen();
+        updateButtons(false, false);
+
+        showAttendanceStatus(
+          "등록 완료되었습니다.\n출근 버튼을 눌러주세요."
+        );
+      })
+      .catch(function() {
+        resetButton(
+          "registerBtn",
+          "직원 등록"
+        );
+
+        showRegisterStatus(
+          "오류가 발생했습니다. 잠시 후 다시 시도해주세요."
+        );
+      });
+    }
+
+
+    function loginEmployee() {
+      const store =
+        document
+          .getElementById("loginStoreInput")
+          .value
+          .trim();
+
+      const name =
+        document
+          .getElementById("loginNameInput")
+          .value
+          .trim();
+
+      const phone =
+        normalizePhone(
+          document
+            .getElementById("loginPhoneInput")
+            .value
+        );
+
+      if (!store || !name || !phone) {
+        showLoginStatus(
+          "매장명, 직원명, 전화번호를 모두 입력해주세요."
+        );
+        return;
+      }
+
+      setButtonLoading(
+        "loginBtn",
+        "로그인 중..."
+      );
+
+      apiRequest({
+        action: "loginEmployee",
+        store: store,
+        name: name,
+        phone: phone,
+        userAgent: navigator.userAgent
+      })
+      .then(function(result) {
+        resetButton(
+          "loginBtn",
+          "로그인"
+        );
+
+        if (!result || !result.success) {
+          showLoginStatus(
+            result && result.message
+              ? result.message
+              : "로그인에 실패했습니다."
+          );
+          return;
+        }
+
+        const employee =
+          result.employee || result;
+
+        currentEmployee = {
+          store:
+            employee.store ||
+            "더큰코리아 본사",
+
+          name:
+            employee.name,
+
+          phone:
+            employee.phone,
+
+          primaryKey:
+            employee.primaryKey ||
+            employee.key ||
+            result.primaryKey ||
+            result.token,
+
+          token:
+            employee.token ||
+            employee.key ||
+            result.token
+        };
+
+        saveEmployee(currentEmployee);
+        showAttendanceScreen();
+        loadTodayStatus();
+      })
+      .catch(function() {
+        resetButton(
+          "loginBtn",
+          "로그인"
+        );
+
+        showLoginStatus(
+          "오류가 발생했습니다. 잠시 후 다시 시도해주세요."
+        );
+      });
+    }
+
+
+    function submitAttendance(type) {
+      if (!currentEmployee.token) {
+        showAttendanceStatus(
+          "직원 정보가 없습니다. 다시 로그인해주세요."
+        );
+        return;
+      }
+
+      const buttonId =
+        type === "출근"
+          ? "checkInBtn"
+          : "checkOutBtn";
+
+      setButtonLoading(
+        buttonId,
+        type + " 처리중..."
+      );
 
       apiRequest({
         action: "submitAttendance",
         token: currentEmployee.token,
-        type,
-        timestamp: new Date().toLocaleString("ko-KR"),
+        type: type,
+        timestamp:
+          new Date().toLocaleString("ko-KR"),
         userAgent: navigator.userAgent
-      }).then(function(result) {
+      })
+      .then(function(result) {
         resetButtonText();
-        showAttendanceStatus(result.message || "");
 
-        if (result.success) {
+        showAttendanceStatus(
+          result && result.message
+            ? result.message
+            : ""
+        );
+
+        if (result && result.success) {
           if (type === "출근") {
             updateButtons(true, false);
           } else {
             updateButtons(true, true);
           }
-        } else {
-          loadTodayStatus();
+
+          return;
         }
-      }).catch(function() {
+
+        loadTodayStatus();
+      })
+      .catch(function() {
         resetButtonText();
-        showAttendanceStatus("오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+
+        showAttendanceStatus(
+          "오류가 발생했습니다. 잠시 후 다시 시도해주세요."
+        );
+
         loadTodayStatus();
       });
     }
+
 
     function loadTodayStatus() {
       apiRequest({
         action: "getTodayAttendanceStatus",
         primaryKey: currentEmployee.primaryKey
-      }).then(function(result) {
-        updateButtons(result.hasCheckIn, result.hasCheckOut);
-      }).catch(function() {
-        showAttendanceStatus("출퇴근 상태 확인 중 오류가 발생했습니다.");
+      })
+      .then(function(result) {
+        if (!result || !result.success) {
+          showAttendanceStatus(
+            result && result.message
+              ? result.message
+              : "오늘 출퇴근 상태를 확인할 수 없습니다."
+          );
+          return;
+        }
+
+        updateButtons(
+          result.hasCheckIn,
+          result.hasCheckOut
+        );
+      })
+      .catch(function() {
+        showAttendanceStatus(
+          "출퇴근 상태 확인 중 오류가 발생했습니다."
+        );
       });
     }
 
-    function updateButtons(hasCheckIn, hasCheckOut) {
-      const checkInBtn = document.getElementById("checkInBtn");
-      const checkOutBtn = document.getElementById("checkOutBtn");
+
+    function updateButtons(
+      hasCheckIn,
+      hasCheckOut
+    ) {
+      const checkInButton =
+        document.getElementById("checkInBtn");
+
+      const checkOutButton =
+        document.getElementById("checkOutBtn");
 
       resetButtonText();
 
-      checkInBtn.disabled = false;
-      checkOutBtn.disabled = false;
+      checkInButton.disabled = false;
+      checkOutButton.disabled = false;
 
-      checkInBtn.classList.remove("btn-disabled");
-      checkOutBtn.classList.remove("btn-disabled");
+      checkInButton
+        .classList
+        .remove("btn-disabled");
+
+      checkOutButton
+        .classList
+        .remove("btn-disabled");
 
       if (hasCheckIn) {
-        checkInBtn.disabled = true;
-        checkInBtn.classList.add("btn-disabled");
+        checkInButton.disabled = true;
+
+        checkInButton
+          .classList
+          .add("btn-disabled");
       }
 
       if (!hasCheckIn || hasCheckOut) {
-        checkOutBtn.disabled = true;
-        checkOutBtn.classList.add("btn-disabled");
+        checkOutButton.disabled = true;
+
+        checkOutButton
+          .classList
+          .add("btn-disabled");
       }
 
       if (!hasCheckIn) {
-        showAttendanceStatus("아직 출근 전입니다.");
-      } else if (hasCheckIn && !hasCheckOut) {
-        showAttendanceStatus("출근 처리되었습니다.\n퇴근 버튼을 사용할 수 있습니다.");
+        showAttendanceStatus(
+          "아직 출근 전입니다."
+        );
+      } else if (
+        hasCheckIn &&
+        !hasCheckOut
+      ) {
+        showAttendanceStatus(
+          "출근 처리되었습니다.\n퇴근 버튼을 사용할 수 있습니다."
+        );
       } else {
-        showAttendanceStatus("오늘 출근과 퇴근이 모두 처리되었습니다.");
+        showAttendanceStatus(
+          "오늘 출근과 퇴근이 모두 처리되었습니다."
+        );
       }
     }
+
 
     function apiRequest(data) {
       return fetch(API_URL, {
         method: "POST",
         mode: "cors",
+
         headers: {
-          "Content-Type": "text/plain;charset=utf-8"
+          "Content-Type":
+            "text/plain;charset=utf-8"
         },
+
         body: JSON.stringify(data)
-      }).then(function(response) {
+      })
+      .then(function(response) {
+        if (!response.ok) {
+          throw new Error(
+            "HTTP 오류: " +
+            response.status
+          );
+        }
+
         return response.json();
       });
     }
 
-    function saveEmployee(emp) {
-      localStorage.setItem("dtk_store", emp.store);
-      localStorage.setItem("dtk_name", emp.name);
-      localStorage.setItem("dtk_phone", emp.phone);
-      localStorage.setItem("dtk_primaryKey", emp.primaryKey);
-      localStorage.setItem("dtk_token", emp.token);
+
+    function saveEmployee(employee) {
+      localStorage.setItem(
+        "dtk_store",
+        employee.store
+      );
+
+      localStorage.setItem(
+        "dtk_name",
+        employee.name
+      );
+
+      localStorage.setItem(
+        "dtk_phone",
+        employee.phone
+      );
+
+      localStorage.setItem(
+        "dtk_primaryKey",
+        employee.primaryKey
+      );
+
+      localStorage.setItem(
+        "dtk_token",
+        employee.token
+      );
     }
+
 
     function clearEmployee() {
       localStorage.removeItem("dtk_store");
@@ -492,8 +868,10 @@
       localStorage.removeItem("dtk_token");
     }
 
+
     function logoutEmployee() {
       clearEmployee();
+
       currentEmployee = {
         store: "",
         name: "",
@@ -501,89 +879,185 @@
         primaryKey: "",
         token: ""
       };
+
       showHomeScreen();
     }
 
-    function setButtonLoading(id, text) {
-      const btn = document.getElementById(id);
-      btn.innerText = text;
-      btn.disabled = true;
+
+    function setButtonLoading(
+      id,
+      text
+    ) {
+      const button =
+        document.getElementById(id);
+
+      button.innerText = text;
+      button.disabled = true;
     }
 
-    function resetButton(id, text) {
-      const btn = document.getElementById(id);
-      btn.innerText = text;
-      btn.disabled = false;
+
+    function resetButton(
+      id,
+      text
+    ) {
+      const button =
+        document.getElementById(id);
+
+      button.innerText = text;
+      button.disabled = false;
     }
+
 
     function resetButtonText() {
-      resetButton("checkInBtn", "출근");
-      resetButton("checkOutBtn", "퇴근");
+      resetButton(
+        "checkInBtn",
+        "출근"
+      );
+
+      resetButton(
+        "checkOutBtn",
+        "퇴근"
+      );
     }
+
 
     function showLoadingScreen() {
       hideAll();
-      document.getElementById("loadingScreen").classList.remove("hidden");
+
+      document
+        .getElementById("loadingScreen")
+        .classList
+        .remove("hidden");
     }
+
 
     function showHomeScreen() {
       hideAll();
-      document.getElementById("homeScreen").classList.remove("hidden");
+
+      document
+        .getElementById("homeScreen")
+        .classList
+        .remove("hidden");
     }
+
 
     function showRegisterScreen() {
       hideAll();
-      document.getElementById("registerScreen").classList.remove("hidden");
+
+      document
+        .getElementById("registerScreen")
+        .classList
+        .remove("hidden");
     }
+
 
     function showLoginScreen() {
       hideAll();
-      document.getElementById("loginScreen").classList.remove("hidden");
+
+      document
+        .getElementById("loginScreen")
+        .classList
+        .remove("hidden");
     }
+
 
     function showAttendanceScreen() {
       hideAll();
-      document.getElementById("attendanceScreen").classList.remove("hidden");
-      document.getElementById("employeeName").innerText = currentEmployee.name;
-      document.getElementById("employeePhone").innerText = formatPhone(currentEmployee.phone);
+
+      document
+        .getElementById("attendanceScreen")
+        .classList
+        .remove("hidden");
+
+      document
+        .getElementById("employeeName")
+        .innerText =
+          currentEmployee.name;
+
+      document
+        .getElementById("employeePhone")
+        .innerText =
+          formatPhone(
+            currentEmployee.phone
+          );
     }
+
 
     function hideAll() {
-      document.getElementById("loadingScreen").classList.add("hidden");
-      document.getElementById("homeScreen").classList.add("hidden");
-      document.getElementById("registerScreen").classList.add("hidden");
-      document.getElementById("loginScreen").classList.add("hidden");
-      document.getElementById("attendanceScreen").classList.add("hidden");
+      document
+        .getElementById("loadingScreen")
+        .classList
+        .add("hidden");
+
+      document
+        .getElementById("homeScreen")
+        .classList
+        .add("hidden");
+
+      document
+        .getElementById("registerScreen")
+        .classList
+        .add("hidden");
+
+      document
+        .getElementById("loginScreen")
+        .classList
+        .add("hidden");
+
+      document
+        .getElementById("attendanceScreen")
+        .classList
+        .add("hidden");
     }
+
 
     function showRegisterStatus(message) {
-      const box = document.getElementById("registerStatus");
+      const box =
+        document.getElementById(
+          "registerStatus"
+        );
+
       box.classList.remove("hidden");
       box.innerText = message;
     }
+
 
     function showLoginStatus(message) {
-      const box = document.getElementById("loginStatus");
+      const box =
+        document.getElementById(
+          "loginStatus"
+        );
+
       box.classList.remove("hidden");
       box.innerText = message;
     }
 
+
     function showAttendanceStatus(message) {
-      document.getElementById("attendanceStatus").innerText = message;
+      document
+        .getElementById("attendanceStatus")
+        .innerText = message;
     }
+
 
     function normalizePhone(phone) {
-      return String(phone || "").replace(/[^0-9]/g, "");
+      return String(phone || "")
+        .replace(/[^0-9]/g, "");
     }
 
-    function formatPhone(phone) {
-      phone = normalizePhone(phone);
 
-      if (phone.length === 11) {
-        return phone.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3");
+    function formatPhone(phone) {
+      const value =
+        normalizePhone(phone);
+
+      if (value.length === 11) {
+        return value.replace(
+          /(\d{3})(\d{4})(\d{4})/,
+          "$1-$2-$3"
+        );
       }
 
-      return phone;
+      return value;
     }
   </script>
 </body>
